@@ -8,7 +8,7 @@ pipeline {
     booleanParam(name: 'executeTests', defaultValue: true, description: '')
   }
   tools {
-    maven 'Maven' //access build tools in your project. So in this one, you can use maven commands later in the file
+    maven-3.8 'Maven' //access build tools in your project. So in this one, you can use maven commands later in the file
   }
 
   stages {
