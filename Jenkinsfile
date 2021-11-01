@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+@Library('jenkins-shared-library') //underscore("_") if we have pipeline after. But we have definition so skip it
 def gv
 
 
@@ -22,14 +24,15 @@ pipeline {
         }
     }
     stage("build") {
-      when {
-        expression {
-            BRANCH_NAME == 'master'
-        }
-      }
+//       when {
+//         expression {
+//             BRANCH_NAME == 'master'
+//         }
+//       }
       steps {
         script {
-            gv.buildApp()
+            //gv.buildApp()
+            buildJar()
         }
         //echo "building the application..."
 //         echo "building version ${NEW_VERSION}"
