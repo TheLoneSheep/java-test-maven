@@ -1,5 +1,13 @@
 #!/usr/bin/env groovy
-@Library('jenkins-shared-library') //underscore("_") if we have pipeline after. But we have definition so skip it
+//@Library('jenkins-shared-library') //underscore("_") if we have pipeline after. But we have definition so skip it
+
+library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+     remote: 'https://github.com/TheLoneSheep/jenkins-shared-library.git',
+     credentialsId: 'github-credentials'
+     ]
+)
+@
 def gv
 
 
@@ -23,7 +31,7 @@ pipeline {
             }
         }
     }
-    stage("build") {
+    stage("build Jar") {
 //       when {
 //         expression {
 //             BRANCH_NAME == 'master'
@@ -37,22 +45,27 @@ pipeline {
         //echo "building the application..."
 //         echo "building version ${NEW_VERSION}"
       }
-
     }
-
-    stage("test") {
-      when {
-        expression {
-            params.executeTests // == true
-        }
-      }
-      steps {
-        script {
-            gv.testApp()
+    stage("build image") {
+        steps {
+            script {
+//                 gv.buildImage()
+                buildImage()
             }
-      }
-
+        }
     }
+//     stage("test") {
+//       when {
+//         expression {
+//             params.executeTests // == true
+//         }
+//       }
+//       steps {
+//         script {
+//             gv.testApp()
+//             }
+//       }
+//     }
 
     stage("deploy") {
 //       input {
