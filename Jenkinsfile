@@ -1,13 +1,13 @@
 #!/usr/bin/env groovy
-//@Library('jenkins-shared-library') //underscore("_") if we have pipeline after. But we have definition so skip it
+@Library('jenkins-shared-library') //underscore("_") if we have pipeline after. But we have definition so skip it
 
-library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
-    [$class: 'GitSCMSource',
-     remote: 'https://github.com/TheLoneSheep/jenkins-shared-library.git',
-     credentialsId: 'github-credentials'
-     ]
-)
-@
+// library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
+//     [$class: 'GitSCMSource',
+//      remote: 'https://github.com/TheLoneSheep/jenkins-shared-library.git',
+//      credentialsId: 'github-credentials'
+//      ]
+// )
+// @
 def gv
 
 
