@@ -50,7 +50,7 @@ pipeline {
         steps {
             script {
 //                 gv.buildImage()
-                buildImage()
+                buildImage 'mrmxvlasov/demo-jma-app:1.0'
             }
         }
     }
